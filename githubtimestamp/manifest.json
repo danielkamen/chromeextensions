@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub Commit Timestamps",
+  "version": "1.0.0",
+  "description": "Show exact date+time next to relative commit times on GitHub commits pages.",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://github.com/*/*/commits/*",
+        "https://github.khoury.northeastern.edu/*/*/commits/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
