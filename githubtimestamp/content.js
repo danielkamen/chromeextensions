@@ -1,13 +1,11 @@
 // Add absolute timestamps next to <relative-time> on GitHub commit lists.
-// Idempotent and resilient to GitHub's dynamic page loads.
 
 const ADDED_FLAG = "data-abs-ts-added";
 const ABS_CLASS = "gh-abs-timestamp";
 
-// Formats as local time with timezone abbreviation, e.g. "2025-06-09 11:04:33 EDT"
+// Formats as local time with timezone abbreviation, "2025-06-09 11:04:33 EDT"
 function formatLocal(dt) {
   const d = new Date(dt);
-  // Some <relative-time> have ISO in "datetime", others in "title"—we’ll trust Date parsing
   return new Intl.DateTimeFormat(undefined, {
     year: "numeric",
     month: "2-digit",
@@ -37,7 +35,6 @@ function addAbsoluteTimestamp(el) {
 
   const abs = formatLocal(iso);
 
-  // Insert a lightweight separator + absolute time
   const span = document.createElement("span");
   span.className = ABS_CLASS;
   span.style.marginLeft = "0.25rem";
